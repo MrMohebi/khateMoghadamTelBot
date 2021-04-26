@@ -1,0 +1,16 @@
+{
+  "name": "khatemoghadambot/khate_moghadam_bot",
+  "description": "Khate Moghadam Telegram Bot",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "MrM",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "longman/telegram-bot": "*"
+  }
+}

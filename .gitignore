@@ -1,0 +1,8 @@
+# ide Files
+**/.idea
+
+# Tokens
+**/Tokens.php
+
+# composer files
+**/vendor
