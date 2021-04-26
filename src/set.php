@@ -1,8 +1,8 @@
 <?php
 // Load composer
-require __DIR__ . '../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
-include_once './Tokens.php';
+include_once 'Tokens.php';
 
 $bot_api_key  = Tokens::$khateMoghadamBot;
 $bot_username = 'khateMoghadamBot';

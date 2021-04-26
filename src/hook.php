@@ -1,10 +1,11 @@
 <?php
 // Load composer
-require __DIR__ . '../vendor/autoload.php';
-include_once('./Tokens.php');
+require __DIR__ . '/../vendor/autoload.php';
+
+include_once 'Tokens.php';
 
 $bot_api_key  = Tokens::$khateMoghadamBot;
-$bot_username = 'username_bot';
+$bot_username = 'khateMoghadamBot';
 
 try {
     // Create Telegram API object
