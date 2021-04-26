@@ -1,4 +1,5 @@
 <?php
+/*
 // Load composer
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -21,3 +22,6 @@ try {
     // log telegram errors
      echo $e->getMessage();
 }
+*/
+
+echo "was set oneTime :)";
