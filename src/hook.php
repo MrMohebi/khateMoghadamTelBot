@@ -24,6 +24,15 @@ try {
     $firstname_of_replied_user = isset($result->message->reply_to_message->from->first_name) ? $result->message->reply_to_message->from->first_name : "";
 
 
+    if ($chatId !== '' && $text !== '') {
+        $data = [
+            'chat_id' => $chatId,
+            'text' => $text,
+        ];
+        $result = Request::sendMessage($data);
+    }
+
+
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
