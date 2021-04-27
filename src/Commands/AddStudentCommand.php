@@ -32,7 +32,7 @@ class AddStudentCommand extends UserCommand{
             if(substr( $eMember, 0, 1 ) == '@')
                 $memberList[] = $eMember;
         }
-        if($memberList > 10){
+        if(count($memberList) > 10){
             return $this->replyToChat("اسپم نکن کونی :|");
         }
         if(count($memberList) > 0){
