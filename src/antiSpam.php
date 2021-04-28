@@ -15,7 +15,7 @@ function antiSpam($senderId, $chatId, $massageId, $text){
         "اعصابم مث فیس این اسپمر کیریه هعی",
         "چیز خاصی نیس کونش میخاره",
         "به درد خارش کون مبتلاست، زود خوب میشه",
-
+        'درسته ممد "فحش نمیده اسب" ولی خب من میدم، نکن کونده برزیلی'
     );
     shuffle($spamResponses);
     $spamResponse = end($spamResponses);
