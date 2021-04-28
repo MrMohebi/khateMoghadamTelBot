@@ -10,6 +10,8 @@ $config = require __DIR__ . '/config.php';
 include_once "DataAccess/MysqldbAccess.php";
 include_once "DataAccess/db.config.php";
 
+include_once 'antiSpam.php';
+
 $connTelbot = MysqlConfig::connTelbot();
 $telbotAccess = new MysqldbAccess($connTelbot);
 
@@ -21,6 +23,7 @@ try {
     // input fields
     $result= json_decode(file_get_contents("php://input"));
     $userId = isset($result->message->from->id) ? $result->message->from->id : "";
+    $username =  isset($result->message->from->username) ? $result->message->from->username : "";
     $userFirstName =  isset($result->message->from->first_name) ? $result->message->from->first_name : "";
     $text = isset($result->message->text) ? $result->message->text : "";
     $chatId = isset($result->message->chat->id) ? $result->message->chat->id : "";
@@ -33,6 +36,13 @@ try {
     if(count(explode("$$$", $text)) > 1){
         if (Request::deleteMessage(['chat_id'    => $chatId, 'message_id' => $massageId,])->isOk())
             Request::sendMessage(['chat_id' => $chatId, 'text' => explode("$$$", $text)[1]]);
+    }
+
+    $isSpam = antiSpam($userId,$chatId,$chatId,$text);
+    if($isSpam !== false){
+        if (Request::deleteMessage(['chat_id'    => $chatId, 'message_id' => $massageId,])->isOk())
+            Request::sendMessage(['chat_id' => $chatId, 'text' => $isSpam . " @". $username]);
+        exit();
     }
 
     if ($chatId !== '' && $text == 'کلاس🍆') {
