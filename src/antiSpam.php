@@ -1,6 +1,12 @@
 <?php
 
 function antiSpam($senderId, $chatId, $massageId, $text){
+
+    // check if massage is a kind of spam words
+    $spamWordList = array('کلاس🍆', '🐣صفحه اصلی', 'لیست دستورات کلاس🍆', 'کلاس➕', 'دانشجو👨‍👨‍👦‍👦', 'دانشجو👨‍👨‍👦', 'کلاس✖️');
+    if(!in_array($text, $spamWordList))
+        return false;
+
     $connTelbot = MysqlConfig::connTelbot();
     $telbotAccess = new MysqldbAccess($connTelbot);
 
