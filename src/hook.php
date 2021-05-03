@@ -45,7 +45,7 @@ try {
         exit();
     }
 
-    if ($chatId !== '' && $text == 'کلاس🍆') {
+    if ($chatId !== '' && $text == 'کلاس') {
         $telegram->executeCommand('classReminder');
         $telegram->executeCommand('editClassReminder');
     }else if($chatId !== '' && $text == '🐣صفحه اصلی'){
@@ -77,6 +77,8 @@ try {
         $telegram->executeCommand('removeStudent');
     }else if($chatId !== '' &&  in_array('کلاس✖️', preg_split('/[\s\n\r]/',$text))){
         $telegram->executeCommand('removeClass');
+    }else if($chatId !== '' && $text == 'بخورش🍆'){
+        $result = Request::sendMessage(['chat_id' => $chatId, 'text' =>  "By order of ESI foocking NAJAFI...",]);
     }
 
 
