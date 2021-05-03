@@ -16,7 +16,7 @@ class StartCommand extends UserCommand{
     {
 
         $keyboard = new Keyboard(
-            ['کلاس🍆'],
+            ['کلاس'],
         );
 
         $data = [
