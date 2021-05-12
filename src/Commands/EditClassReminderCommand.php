@@ -15,7 +15,7 @@ class EditClassReminderCommand extends UserCommand{
     {
 
         $keyboard = new Keyboard(
-            ['لیست دستورات کلاس🍆', 'کلاس🍆'],
+            ['لیست دستورات کلاس🍆', 'کلاس'],
             ['🐣صفحه اصلی']
         );
         $data = [
