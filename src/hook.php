@@ -22,14 +22,14 @@ try {
 
     // input fields
     $result= json_decode(file_get_contents("php://input"));
-    $userId = isset($result->message->from->id) ? $result->message->from->id : "";
-    $username =  isset($result->message->from->username) ? $result->message->from->username : "";
-    $userFirstName =  isset($result->message->from->first_name) ? $result->message->from->first_name : "";
-    $text = isset($result->message->text) ? $result->message->text : "";
-    $chatId = isset($result->message->chat->id) ? $result->message->chat->id : "";
-    $massageId = isset($result->message->message_id) ? $result->message->message_id : "";
-    $idOfRepliedUser = isset($result->message->reply_to_message->from->id) ? $result->message->reply_to_message->from->id : "";
-    $firstname_of_replied_user = isset($result->message->reply_to_message->from->first_name) ? $result->message->reply_to_message->from->first_name : "";
+    $userId = $result->message->from->id ?? "";
+    $username = $result->message->from->username ?? "";
+    $userFirstName = $result->message->from->first_name ?? "";
+    $text = $result->message->text ?? "";
+    $chatId = $result->message->chat->id ?? "";
+    $massageId = $result->message->message_id ?? "";
+    $idOfRepliedUser = $result->message->reply_to_message->from->id ?? "";
+    $firstname_of_replied_user = $result->message->reply_to_message->from->first_name ?? "";
 
     $telegram->handle();
 
