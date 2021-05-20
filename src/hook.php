@@ -37,7 +37,8 @@ try {
         'chat_id'=>$chatId,
         "info_data"=>json_encode($result),
         "massage_text"=>$text,
-        "replay_to_massage_text"=>$repliedText
+        "replay_to_massage_text"=>$repliedText,
+        "sent_at"=>time()
     ));
 
     $telegram->handle();
