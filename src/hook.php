@@ -29,7 +29,16 @@ try {
     $chatId = $result->message->chat->id ?? "";
     $massageId = $result->message->message_id ?? "";
     $idOfRepliedUser = $result->message->reply_to_message->from->id ?? "";
+    $repliedText = $result->message->reply_to_message->text ?? "";
     $firstname_of_replied_user = $result->message->reply_to_message->from->first_name ?? "";
+
+    // save to chat history
+    $telbotAccess->insert("chat_history", array(
+        'chat_id'=>$chatId,
+        "info_data"=>json_encode($result),
+        "massage_text"=>$text,
+        "replay_to_massage_text"=>$repliedText
+    ));
 
     $telegram->handle();
 
