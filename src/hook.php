@@ -91,10 +91,12 @@ try {
         $telegram->executeCommand('removeClass');
     }else if($chatId !== '' && $text == 'بخورش🍆'){
         $result = Request::sendMessage(['chat_id' => $chatId, 'text' =>  "By order of ESI foocking NAJAFI...",]);
-    } else if ( $userId == 851828777 && ($text == 'دهنت' || $text == 'ندهنت') && isset($firstname_of_replied_user) &&  $firstname_of_replied_user != ""){
+    }else if ( $userId == 851828777 && ($text == 'دهنت' || $text == 'ندهنت') && isset($firstname_of_replied_user) &&  $firstname_of_replied_user != ""){
         $telegram->executeCommand('addDelDisGif');
+    }else if (strpos($text, 'کیرم') !== false){
+        $result = Request::sendMessage(['chat_id' => $chatId, 'text' =>  "کیر ممدا دهنت ". "\n" ."@Amirhosssein"]);
     }
-    
+
     $telegram->executeCommand('deleteDisGif');
 
 
