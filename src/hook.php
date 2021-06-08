@@ -48,6 +48,8 @@ try {
             Request::sendMessage(['chat_id' => $chatId, 'text' => explode("$$$", $text)[1]]);
     }
 
+
+
     $isSpam = antiSpam($userId,$chatId,$chatId,$text);
     if($isSpam !== false){
         if (Request::deleteMessage(['chat_id'    => $chatId, 'message_id' => $massageId,])->isOk())
@@ -89,8 +91,11 @@ try {
         $telegram->executeCommand('removeClass');
     }else if($chatId !== '' && $text == 'بخورش🍆'){
         $result = Request::sendMessage(['chat_id' => $chatId, 'text' =>  "By order of ESI foocking NAJAFI...",]);
+    } else if ( $userId == 851828777 && ($text == 'دهنت' || $text == 'ندهنت') && isset($firstname_of_replied_user) &&  $firstname_of_replied_user != ""){
+        $telegram->executeCommand('addDelDisGif');
     }
-
+    
+    $telegram->executeCommand('deleteDisGif');
 
 
 //    else{
