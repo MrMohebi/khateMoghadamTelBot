@@ -4,6 +4,7 @@ namespace Longman\TelegramBot\Commands\UserCommands;
 use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Entities\ServerResponse;
 
+use Longman\TelegramBot\Request;
 use MysqlConfig;
 use MysqldbAccess;
 
@@ -30,12 +31,13 @@ class AddDelDisGifCommand extends UserCommand{
                 return $this->replyToChat("حالمون بهم زدی :(");
             }
             $telbotAccess->updateAppendToList("temp_data", array("data"=>$fileUniqueId), "`name`='disGif'");
+            return $this->replyToChat("حالمون بهم زدی :(");
         }else if($text == "ندهنت" && strlen($fileUniqueId) > 2){
             $newUniqueList = array_values(array_diff($uniqueList,[$fileUniqueId]));
             $telbotAccess->update("temp_data", array("data"=>json_encode($newUniqueList)), "`name`='disGif'");
             return $this->replyToChat("اوک بفرستش، ولی دهنت");
         }
 
-        return $this->replyToChat("حالمون بهم زدی :(");
+        return Request::emptyResponse();
     }
 }

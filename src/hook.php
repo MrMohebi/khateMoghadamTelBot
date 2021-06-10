@@ -31,6 +31,7 @@ try {
     $idOfRepliedUser = $result->message->reply_to_message->from->id ?? "";
     $repliedText = $result->message->reply_to_message->text ?? "";
     $firstname_of_replied_user = $result->message->reply_to_message->from->first_name ?? "";
+    $isMassageAnimation = isset($result->message->animation);
 
     // save to chat history
     $telbotAccess->insert("chat_history", array(
@@ -93,11 +94,12 @@ try {
         $result = Request::sendMessage(['chat_id' => $chatId, 'text' =>  "By order of ESI foocking NAJAFI...",]);
     }else if ( $userId == 851828777 && ($text == 'دهنت' || $text == 'ندهنت') && isset($firstname_of_replied_user) &&  $firstname_of_replied_user != ""){
         $telegram->executeCommand('addDelDisGif');
-    }else if (strpos($text, 'کیرم') !== false){
-        $result = Request::sendMessage(['chat_id' => $chatId, 'text' =>  "کیر ممدا دهنت ". "\n" ."@Amirhosssein"]);
+    } else if (strpos($text, 'کیرم') !== false){
+        $result = Request::sendMessage(['chat_id' => $chatId, 'text' =>  "کیر ممدا دهنت ". "\n" ." @Amirhosssein "]);
+    }else if($isMassageAnimation){
+        $telegram->executeCommand('deleteDisGif');
     }
 
-    $telegram->executeCommand('deleteDisGif');
 
 
 //    else{
