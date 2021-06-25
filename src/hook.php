@@ -94,13 +94,14 @@ try {
         $result = Request::sendMessage(['chat_id' => $chatId, 'text' =>  "By order of ESI foocking NAJAFI...",]);
     }else if ( $userId == 851828777 && ($text == 'دهنت' || $text == 'ندهنت') && isset($firstname_of_replied_user) &&  $firstname_of_replied_user != ""){
         $telegram->executeCommand('addDelDisGif');
-    } else if (strpos($text, 'کیرم') !== false){
-        $result = Request::sendMessage(['chat_id' => $chatId, 'text' =>  "کیر ممدا دهنت ". "\n" ." @Amirhosssein "]);
     }else if($isMassageAnimation){
         $telegram->executeCommand('deleteDisGif');
+        $telegram->executeCommand('getGifInfo');
     }
 
-
+// else if (strpos($text, 'کیرم') !== false){
+//        $result = Request::sendMessage(['chat_id' => $chatId, 'text' =>  "کیر ممدا دهنت ". "\n" ." @Amirhosssein "]);
+//    }
 
 //    else{
 //        $data = [
@@ -110,6 +111,7 @@ try {
 //        $result = Request::sendMessage($data);
 //    }
 
+    $telegram->executeCommand('sendGif');
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
