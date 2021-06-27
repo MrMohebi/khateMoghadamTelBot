@@ -33,14 +33,6 @@ try {
     $firstname_of_replied_user = $result->message->reply_to_message->from->first_name ?? "";
     $isMassageAnimation = isset($result->message->animation);
 
-    // save to chat history
-    $telbotAccess->insert("chat_history", array(
-        'chat_id'=>$chatId,
-        "info_data"=>json_encode($result),
-        "massage_text"=>$text,
-        "replay_to_massage_text"=>$repliedText,
-        "sent_at"=>time()
-    ));
 
     $telegram->handle();
 
@@ -112,6 +104,15 @@ try {
 //    }
 
     $telegram->executeCommand('sendGif');
+
+    // save to chat history
+    $telbotAccess->insert("chat_history", array(
+        'chat_id'=>$chatId,
+        "info_data"=>json_encode($result),
+        "massage_text"=>$text,
+        "replay_to_massage_text"=>$repliedText,
+        "sent_at"=>time()
+    ));
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
