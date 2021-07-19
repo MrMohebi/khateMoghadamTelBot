@@ -1,14 +1,14 @@
 <?php
-namespace Longman\TelegramBot\Commands\UserCommands;
+namespace Longman\TelegramBot\Commands\SystemCommands;
 
-use Longman\TelegramBot\Commands\UserCommand;
+use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Entities\ServerResponse;
 
 use Longman\TelegramBot\Request;
 
 
-class SendGifCommand extends UserCommand{
-    protected $name = 'sendGif';
+class GenericmessageCommand extends SystemCommand{
+    protected $name = 'genericmessage';
     protected $description = 'send gif base on text';
     protected $version = '1.0.0';
 

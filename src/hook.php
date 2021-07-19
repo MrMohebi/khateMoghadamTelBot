@@ -82,7 +82,7 @@ try {
         $telegram->executeCommand('removeStudent');
     }else if($chatId !== '' &&  in_array('کلاس✖️', preg_split('/[\s\n\r]/',$text))){
         $telegram->executeCommand('removeClass');
-    }else if($chatId !== '' && $text == 'بخورش🍆'){
+    } else if($chatId !== '' && $text == 'بخورش🍆'){
         $result = Request::sendMessage(['chat_id' => $chatId, 'text' =>  "By order of ESI foocking NAJAFI...",]);
     }else if ( $userId == 851828777 && ($text == 'دهنت' || $text == 'ندهنت') && isset($firstname_of_replied_user) &&  $firstname_of_replied_user != ""){
         $telegram->executeCommand('addDelDisGif');
@@ -103,16 +103,16 @@ try {
 //        $result = Request::sendMessage($data);
 //    }
 
-    $telegram->executeCommand('sendGif');
+//    $telegram->executeCommand('sendGif');
 
-    // save to chat history
-    $telbotAccess->insert("chat_history", array(
-        'chat_id'=>$chatId,
-        "info_data"=>json_encode($result),
-        "massage_text"=>$text,
-        "replay_to_massage_text"=>$repliedText,
-        "sent_at"=>time()
-    ));
+//    // save to chat history
+//    $telbotAccess->insert("chat_history", array(
+//        'chat_id'=>$chatId,
+//        "info_data"=>json_encode($result),
+//        "massage_text"=>$text,
+//        "replay_to_massage_text"=>$repliedText,
+//        "sent_at"=>time()
+//    ));
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
