@@ -2,7 +2,7 @@
 include_once "../DataAccess/MysqldbAccess.php";
 include_once "../DataAccess/db.config.php";
 
-function disGif($bot,$message):bool{
+function disGif($bot,$message){
     $chatId = $message->getChat()->getId();
 
     $connTelbot = MysqlConfig::connTelbot();
