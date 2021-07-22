@@ -11,6 +11,7 @@
   ],
   "require": {
     "php": ">=7.4",
-    "longman/telegram-bot": "*"
+    "telegram-bot/api": "^2.3",
+    "vlucas/phpdotenv": "^5.3"
   }
 }
