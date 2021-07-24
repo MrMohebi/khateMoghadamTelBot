@@ -36,6 +36,11 @@ try {
             sendGif($bot, $chatId, $text);
         }
 
+        // high school class actions
+        if($chatId == "-1001458338829"){
+            sendGif($bot, $chatId, $text);
+        }
+
         disGif($bot, $message);
         dummyText($bot, $message);
 
