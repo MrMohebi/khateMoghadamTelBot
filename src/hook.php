@@ -12,6 +12,8 @@ use TelegramBot\Api\Types\Update;
 
 include_once "functions/sendGif.php";
 include_once "functions/disGif.php";
+include_once "functions/dummyText.php";
+
 
 try {
     $bot = new Client($_ENV['TOKEN']);
@@ -28,13 +30,14 @@ try {
         // test section
 //        if($chatId == "-1001233610032" || "-1001325863232")
 
+
         // Khate Moghadam actions
         if($chatId == "-1001416542274"){
             sendGif($bot, $chatId, $text);
         }
 
         disGif($bot, $message);
-
+        dummyText($bot, $message);
 
     }, function () {
         return true;
