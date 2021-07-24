@@ -33,29 +33,33 @@ function dummyText($bot, $message){
         $d = new DOMDocument();
         $d->validateOnParse = true;
         $d->loadHTML(getPageContent("http://patorjk.com/misc/scrollingtext/timewaster.php?text=".urlencode(($dummyText))));
-        $openingStr = "......................................................................................................................................\n";
+        $openingStr = "..................................................................\n";
         $resultArr = [$openingStr];
         $resultArrLength = 0;
         $tempLength = strlen($openingStr);
         foreach ($d->getElementById("scrollingTextOutput")->childNodes as $node){
             if($node->tagName !== "br"){
                 if($tempLength<4096){
-                    $sentence = utf8_decode($node->textContent) . "\n";
+                    $sentence = substr(utf8_decode($node->textContent) . "\n", -65);
                     $resultArr[$resultArrLength] .= $sentence;
                     $tempLength += strlen($sentence);
-                    if($tempLength>4096){
+                    if($tempLength>=4096){
                         $resultArr[$resultArrLength] .= ".";
                     }
                 }else{
-                    $tempLength = strlen($openingStr);
                     $resultArrLength++;
-                    $resultArr[$resultArrLength] = $openingStr . utf8_decode($node->textContent) . "\n";
+                    $sentence = $openingStr . substr(utf8_decode($node->textContent) . "\n", -65);
+                    $resultArr[$resultArrLength] = $sentence;
+                    $tempLength = strlen($sentence);
                 }
             }
         }
 
         foreach ($resultArr as $eMessage){
-            $bot->sendMessage($chatId, $eMessage);
+            try{
+                $bot->sendMessage($chatId, $eMessage);
+                sleep(0.3);
+            }catch (Exception $e){}
         }
     }
 }
